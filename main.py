@@ -1,14 +1,13 @@
-from fastapi import FastAPI 
+from fastapi import FastAPI
+import uvicorn
+
+from routers import hubspot,clickup
 
 
 app = FastAPI()
 
-@app.post("/setHubSpot")
-async def setContact():
-    return "holita"
+app.include_router(hubspot.router)
+app.include_router(clickup.router)
 
-
-
-@app.post("/syncData")
-async def syncData():
-    return "holita"
+if __name__ == '__main__':
+    uvicorn.run('main:app')
