@@ -4,10 +4,11 @@ from fastapi import FastAPI
 app = FastAPI()
 
 @app.post("/setHubSpot")
-def setContact():
-    return "hola"
+async def setContact():
+    return "holita"
 
 
-@app.post("syncData")
-def syncData():
-    return "buenas"
+
+@app.post("/syncData")
+async def syncData():
+    return "holita"
