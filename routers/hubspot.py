@@ -47,16 +47,13 @@ async def setContact(contact : Contact):
 
     return Response(content=json_str, media_type='application/json')
 
-@router.get("/getContacts")
-async def getContacts():
+def getContacts():
 
     try:
-        api_response = client.crm.contacts.basic_api.get_page(limit=10, archived=False)
+        api_response = client.crm.contacts.get_all()
     except ApiException as e:
         return str(e)
 
-    json_str = json.dumps(api_response, indent=4, default=str)
-
-    return Response(content=json_str, media_type='application/json')
+    return api_response
 
 
